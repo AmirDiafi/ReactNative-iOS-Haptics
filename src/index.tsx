@@ -1,4 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
+import type { HapticsImpactTypes, HapticsNotificationTypes } from './types';
 
 const LINKING_ERROR =
   `The package 'react-native-ios-haptics' doesn't seem to be linked. Make sure: \n\n` +
@@ -6,8 +7,8 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const IosHaptics = NativeModules.IosHaptics
-  ? NativeModules.IosHaptics
+const HapticsManager = NativeModules.HapticsManager
+  ? NativeModules.HapticsManager
   : new Proxy(
       {},
       {
@@ -17,6 +18,12 @@ const IosHaptics = NativeModules.IosHaptics
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return IosHaptics.multiply(a, b);
-}
+const notificationFeedback = (type: HapticsNotificationTypes) => {
+  HapticsManager.notificationFeedback(type);
+};
+
+const impactFeedback = (type: HapticsImpactTypes) => {
+  HapticsManager.impactFeedback(type);
+};
+
+export { notificationFeedback, impactFeedback };
