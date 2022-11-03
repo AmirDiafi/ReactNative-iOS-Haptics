@@ -11,11 +11,12 @@ npm install react-native-ios-haptics
 ## Usage
 
 ```js
-import { multiply } from 'react-native-ios-haptics';
+import { notificationFeedback, impactFeedback } from 'react-native-ios-haptics';
 
 // ...
 
-const result = await multiply(3, 7);
+notificationFeedback('success');
+impactFeedback('soft');
 ```
 
 ## Contributing
