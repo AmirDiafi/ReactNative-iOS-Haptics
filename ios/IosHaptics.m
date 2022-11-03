@@ -1,10 +1,12 @@
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(IosHaptics, NSObject)
+@interface
+// MARK: module to export.
+RCT_EXTERN_MODULE(HapticsManager, NSObject)
 
-RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+// MARK: methods goes here.
+RCT_EXTERN_METHOD(notificationFeedback:(NSString)feedbackType)
+RCT_EXTERN_METHOD(impactFeedback: (NSString)feedbackType)
 
 + (BOOL)requiresMainQueueSetup
 {
