@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { Alert, NativeModules, Platform } from 'react-native';
 import type { HapticsImpactTypes, HapticsNotificationTypes } from './types';
 
 const LINKING_ERROR =
@@ -19,11 +19,19 @@ const HapticsManager = NativeModules.HapticsManager
     );
 
 const notificationFeedback = (type: HapticsNotificationTypes) => {
-  HapticsManager.notificationFeedback(type);
+  if (Platform.OS === 'ios') {
+    HapticsManager.notificationFeedback(type);
+  } else {
+    Alert.alert('This is not supported for Android yet');
+  }
 };
 
 const impactFeedback = (type: HapticsImpactTypes) => {
-  HapticsManager.impactFeedback(type);
+  if (Platform.OS === 'ios') {
+    HapticsManager.impactFeedback(type);
+  } else {
+    Alert.alert('This is not supported for Android yet');
+  }
 };
 
 export { notificationFeedback, impactFeedback };
