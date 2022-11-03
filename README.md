@@ -21,6 +21,16 @@ notificationFeedback('success');
 impactFeedback('soft');
 ```
 
+## Feedbacks
+
+| Impact        | Notifications |
+| ------------- | ------------- |
+| soft          | success       |
+| light         | warning       |
+| medium        | error         |
+| rigid         |               |
+| heavy         |               |               
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
